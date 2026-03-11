@@ -7,3 +7,5 @@ Spring Boot MVC project for OOAD Lab.
 - Prevent duplicate email
 - Display student list
 - MySQL database integration
+
+Before running the project, update application.properties with your MySQL password.
