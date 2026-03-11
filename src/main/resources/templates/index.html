@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Student Management System</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background-color:#f4f6f9;
+    margin:40px;
+}
+
+.container{
+    width:700px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+    margin-bottom:15px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#4CAF50;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#45a049;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table, th, td{
+    border:1px solid #ddd;
+}
+
+th{
+    background:#4CAF50;
+    color:white;
+}
+
+th, td{
+    padding:10px;
+    text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Registration</h2>
+
+<p th:if="${message}" style="color:green; font-weight:bold;">
+    <span th:text="${message}"></span>
+</p>
+
+<form th:action="@{/students}" th:object="${student}" method="post">
+
+<label>Name</label>
+<input type="text" th:field="*{name}" required>
+
+<label>Email</label>
+<input type="email" th:field="*{email}" required>
+
+<label>Course</label>
+<input type="text" th:field="*{course}" required>
+
+<button type="submit">Add Student</button>
+
+</form>
+
+<h2>Student List</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Course</th>
+</tr>
+
+<tr th:each="s : ${students}">
+<td th:text="${s.id}"></td>
+<td th:text="${s.name}"></td>
+<td th:text="${s.email}"></td>
+<td th:text="${s.course}"></td>
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>
